@@ -5,49 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rio Jaya Online Shop</title>
     <style>
+        /* Animasi latar belakang dengan GIF */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ff5722, #ffc107);
+            background-image: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG1rNjR6cHBvNDJ5Y2hnYXRhMmJlNHR2MGt1OXJ2aWJ1dzhsdHZoMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BLfTnmxKOP905dBTRH/giphy.gif');
+            background-size: cover;
+            background-position: center;
             color: #212121;
             text-align: center;
-            padding: 50px;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-attachment: fixed;
         }
+
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
         }
+
         p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
+
         .container {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            max-width: 600px;
-            margin: auto;
+            max-width: 90%;
+            margin: 20px auto;
+            text-align: center;
         }
+
+        /* Link buttons */
         .link {
             display: block;
             background-color: #00796b;
             color: #fff;
             text-decoration: none;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 12px;
+            margin: 10px 0;
             border-radius: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s, transform 0.3s;
             font-size: 1.1em;
         }
+
         .link:hover {
             background-color: #004d40;
             transform: translateY(-2px);
         }
+
+        /* Gambar logo profil */
         img.logo {
             max-width: 120px;
             margin-bottom: 20px;
@@ -56,18 +74,14 @@
             cursor: pointer;
             transition: transform 0.3s;
         }
+
         img.logo:hover {
             transform: scale(1.05);
         }
-        footer {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #212121;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-        }
-        /* Style untuk modal */
+
+        /* Modal untuk gambar profil */
         .modal {
-            display: flex;
+            display: none;
             position: fixed;
             z-index: 1;
             left: 0;
@@ -77,13 +91,17 @@
             background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s; /* Animasi muncul */
         }
+
         .modal img {
-            max-width: 300px; /* Ukuran gambar dalam modal */
+            max-width: 80%;
+            max-height: 80%;
             border-radius: 10px;
-            animation: zoomIn 0.3s; /* Animasi zoom in */
+            animation: zoomIn 0.3s;
+            display: block;
+            margin: 0 auto;
         }
+
         .close {
             position: absolute;
             top: 20px;
@@ -93,24 +111,51 @@
             cursor: pointer;
             transition: color 0.3s;
         }
+
         .close:hover {
-            color: #ff5722; /* Warna saat hover */
+            color: #ff5722;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+
         @keyframes zoomIn {
             from { transform: scale(0); }
             to { transform: scale(1); }
         }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #212121;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsif untuk mobile */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .container {
+                padding: 15px;
+            }
+            img.logo {
+                max-width: 100px;
+            }
+            .link {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <img src="WhatsApp Image 2024-10-21 at 17.55.01.jpeg" alt="Logo Toko" class="logo" id="logoImage">
+        <!-- Gambar Profil yang bisa diklik untuk muncul di modal -->
+        <img src="c:\Users\DELL\Downloads\WhatsApp Image 2024-10-21 at 17.55.01.jpeg" alt="Logo Toko" class="logo" id="logoImage" onclick="showImage(this.src)">
         <h1>Rio Jaya Online Shop</h1>
-        <p>𝗧𝗼𝗸𝗼 𝗧𝗮𝘀 𝗣𝗿𝗲𝗹𝗼𝘃𝗲𝗱 𝗦𝗶𝗻𝗴𝗮𝗽𝗼𝗿𝗲, 𝗡𝗼 𝗠𝗶𝗻𝘂𝘀, 𝗔𝘀𝗹𝗶 💯℅℅</p>
+        <p>𝗧𝗼𝗸𝗼 𝗧𝗮𝘀 𝗣𝗿𝗲𝗹𝗼𝘃𝗲𝗱 𝗦𝗶𝗻𝗴𝗮𝗽𝗼𝗿𝗲, 𝗡𝗼 𝗠𝗶𝗻𝘂𝘀, 𝗔𝘀𝗹𝗶 💯℅</p>
 
         <a class="link" href="https://wa.me/6285973057455" target="_blank">Hubungi Kami via WhatsApp</a>
         <a class="link" href="https://www.facebook.com/marketplace/profile/100010274856215/?ref=permalink&mibextid=dXMIcH" target="_blank">Ikuti Kami di Facebook</a>
@@ -120,25 +165,33 @@
         <p>&copy; 2024 Rio Jaya Online Shop</p>
     </footer>
 
+    <!-- Modal untuk gambar profil -->
+    <div class="modal" id="imageModal">
+        <img id="modalImage" src="" alt="Profil" />
+        <span class="close" onclick="closeModal()">✖</span>
+    </div>
+
     <script>
         function showImage(src) {
-            const modal = document.createElement('div');
-            modal.className = 'modal';
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = src;
+            modal.style.display = 'flex';
+        }
 
-            const img = document.createElement('img');
-            img.src = src;
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
 
-            const closeBtn = document.createElement('span');
-            closeBtn.textContent = '✖';
-            closeBtn.className = 'close';
-            closeBtn.onclick = function() {
-                document.body.removeChild(modal);
-            };
-
-            modal.appendChild(img);
-            modal.appendChild(closeBtn);
-            document.body.appendChild(modal);
+        // Menutup modal ketika pengguna mengklik di luar gambar
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
         }
     </script>
+
 </body>
 </html>
